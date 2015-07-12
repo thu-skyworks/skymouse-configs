@@ -825,6 +825,15 @@ config ARCH_BOARD_STM3210E_EVAL
 		microcontroller (ARM Cortex-M3).  This port uses the GNU Cortex-M3
 		toolchain.
 
+config ARCH_BOARD_STM32F103_SKYMOUSE
+        bool "STM32F103RCT6 skyworks training board"
+	depends on ARCH_CHIP_STM32F103RC
+	select ARCH_HAVE_LEDS
+	select ARCH_HAVE_BUTTONS
+	select ARCH_HAVE_IRQBUTTONS
+	---help---
+		No help, you are on your own.
+
 config ARCH_BOARD_STM3220G_EVAL
 	bool "STMicro STM3220G-EVAL development board"
 	depends on ARCH_CHIP_STM32F207IG
@@ -1268,6 +1277,7 @@ config ARCH_BOARD
 	default "spark"                    if ARCH_BOARD_SPARK
 	default "stm32_tiny"               if ARCH_BOARD_STM32_TINY
 	default "stm3210e-eval"            if ARCH_BOARD_STM3210E_EVAL
+	default "stm32f103rc"              if ARCH_BOARD_STM32F103_SKYMOUSE
 	default "stm3220g-eval"            if ARCH_BOARD_STM3220G_EVAL
 	default "stm3240g-eval"            if ARCH_BOARD_STM3240G_EVAL
 	default "stm32f3discovery"         if ARCH_BOARD_STM32F3_DISCOVERY
@@ -1590,6 +1600,9 @@ source "configs/spark/Kconfig"
 endif
 if ARCH_BOARD_STM32_TINY
 source "configs/stm32_tiny/Kconfig"
+endif
+if ARCH_BOARD_STM3210E_EVAL
+source "configs/stm3210e-eval/Kconfig"
 endif
 if ARCH_BOARD_STM3210E_EVAL
 source "configs/stm3210e-eval/Kconfig"
